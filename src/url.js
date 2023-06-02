@@ -1,0 +1,1 @@
+export const webUrl = 'https://f719-93-72-245-51.eu.ngrok.io';
