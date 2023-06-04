@@ -15,11 +15,14 @@ export default function SemiAutoResForm() {
         }
         setIsLoading(true)
         try {
+            setIsLoading(false)
             // await axios.post(`${webUrl}/semi-auto-res-data`, {code, amount})
+            
         } catch (error) {
             alert('Server error')
+            setIsLoading(false)
         }
-        setIsLoading(false)
+        
     }
 
     return (
@@ -34,7 +37,7 @@ export default function SemiAutoResForm() {
                 <input type="text" value={code} onChange={(e) => setCode(e.target.value)} className=' flex justify-between border-2 items-center border-gray-300 rounded-md w-1/2 min-w-200 px-3 py-2' />
             </div>
             {
-                isLoading && <img src={loader} className=' w-9 h-auto m-auto mt-4' alt="Loading..." /> 
+                isLoading && <img src={loader} className=' w-9 h-auto m-auto mt-5' alt="Loading..." /> 
             }
             
             <div className=" w-full flex justify-center py-5">
