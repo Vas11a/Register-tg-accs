@@ -5,16 +5,14 @@ import { webUrl } from '../url'
 
 export default function UserList() {
     const [isLoading, setIsLoading] = React.useState(false);
-    const [list, setList] = React.useState([{"country": "Ukraina", "data": "20202", "activity": "40404"}, {"country": "Poland", "data": "2000", "activity": "3434"}])
+    const [list, setList] = React.useState([])
     const getListData = async () => {
         setIsLoading(true)
         try {
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 1000)
-            // const res = await axios.get(`${webUrl}/lst_of_obj`)
-            // console.log(res.data)
-            // setList(res.data)
+            const res = await axios.get(`${webUrl}getList`)
+            
+            setIsLoading(false)
+            setList(res.data)
         } catch (error) {
             alert('Server error')
             setIsLoading(false)

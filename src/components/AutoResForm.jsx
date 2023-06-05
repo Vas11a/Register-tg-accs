@@ -15,9 +15,10 @@ export default function AutoResForm() {
             return            
         }
         setIsLoading(true)
-        try {
-            setIsLoading(false)
-            // await axios.post(`${webUrl}/auto-res-data`, {country, accsAmount:amount})
+        try {        
+            const res = await axios.post(`${webUrl}register-auto`, {country, amount})
+            alert(res.data.message)
+            setIsLoading(false)    
         } catch (error) {
             alert('Server error')
             setIsLoading(false)
@@ -25,7 +26,7 @@ export default function AutoResForm() {
     }
 
     return (
-        <div className=" mt-8 min-w-375 flex-1 bg-white border border-gray-200">
+        <div className=" mt-8 min-w-375 flex-1 pb-2 bg-white border border-gray-200">
             <div className=" bg-gray-50 p-3 text-lg font-bold text-blue-600">Автоматично</div>
             <div className="m-3 mt-8 flex justify-between items-center gap-4">
                 <div className=' text-lg'>Кількість аккаунтів:</div>
@@ -38,7 +39,7 @@ export default function AutoResForm() {
             {
                 isLoading && <img src={loader} className=' w-9 h-auto m-auto mt-5' alt="Loading..." /> 
             }
-            <div className=" w-full flex sm:justify-center py-5">
+            <div className=" w-full flex ml-3 py-5">
                 <div onClick={postAutoResData} className=' cursor-pointer px-2 py-1 rounded-lg bg-green-300 border-2 duration-500 hover:bg-green-600 text-lg border-green-600'>Застосувати</div>
             </div>
         </div>

@@ -27,7 +27,7 @@ export default function CountryChange({setCountry, country}) {
         <div className=' w-1/2 relative'>
             <input onFocus={() => setOptionsOpen(true)} type="text" value={country} onChange={(e) => onChangeInput(e.target.value)} className=' flex justify-between border-2 items-center border-gray-300 rounded-md w-full min-w-200 px-3 py-2' />
             {
-                isOptionsOpen && <div className=" max-h-100 overflow-auto absolute top-11 right-0 p-2 border-2 w-fit border-gray-300 rounded-b-md">
+                isOptionsOpen && <div className=" w-full max-h-100 overflow-auto absolute top-12 right-0 p-2 border-2 border-gray-300 rounded-md">
                     
                     {
                         filteredCountryArr.map((elem , idx) => (

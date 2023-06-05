@@ -6,17 +6,18 @@ import { webUrl } from '../url';
 export default function Manual() {
     const [isLoading, setIsLoading] = React.useState(false);
     const [code, setCode] = React.useState('');
-    const [phoneNumber, setNumber] = React.useState('');
+    const [phone, setNumber] = React.useState('');
 
     const postManualData = async () => {
-        if (code.replace(/\s/g, "").length < 1 || phoneNumber.replace(/\s/g, "").length < 5) {
+        if (code.replace(/\s/g, "").length < 1 || phone.replace(/\s/g, "").length < 5) {
             alert('Enter correct data')
             return            
         }
         setIsLoading(true)
         try {
+            const res = await axios.post(`${webUrl}register-manual`, {code, phone})
+            alert(res.data.message)
             setIsLoading(false)
-            // await axios.post(`${webUrl}/manual-res-data`, {code, phoneNumber})
         } catch (error) {
             alert('Server error')
             setIsLoading(false)
@@ -28,7 +29,7 @@ export default function Manual() {
             <div className=" bg-gray-50 p-3 text-lg font-bold text-blue-600">Мануально</div>
             <div className="m-3 mt-8 flex justify-between items-center gap-4">
                 <div className=' text-lg'>Номер телефона:</div>
-                <input type="text" value={phoneNumber} onChange={(e) => setNumber(e.target.value)} className=' flex justify-between border-2 items-center border-gray-300 rounded-md w-1/2 min-w-200 px-3 py-2' />
+                <input type="text" value={phone} onChange={(e) => setNumber(e.target.value)} className=' flex justify-between border-2 items-center border-gray-300 rounded-md w-1/2 min-w-200 px-3 py-2' />
             </div>
             <div className="m-3 mt-8 flex justify-between items-center gap-4">
                 <div className=' text-lg'>Код підтвердження:</div>

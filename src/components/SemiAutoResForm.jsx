@@ -15,14 +15,13 @@ export default function SemiAutoResForm() {
         }
         setIsLoading(true)
         try {
+            const res = await axios.post(`${webUrl}register-semi-auto`, {code, amount})
+            alert(res.data.message)
             setIsLoading(false)
-            // await axios.post(`${webUrl}/semi-auto-res-data`, {code, amount})
-            
         } catch (error) {
             alert('Server error')
             setIsLoading(false)
         }
-        
     }
 
     return (
